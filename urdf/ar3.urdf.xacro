@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="ar3-description">
+
+    <!-- helper macro -->
+    <xacro:include filename="$(find ar3-description)/urdf/inc/create_link.xacro" />
+
+    <!-- Arm links -->
+    <xacro:create_link
+      link_name = "base_link"
+      mesh_package = "ar3-description"
+      mesh_name = "base_link"
+      inertial_xyz = "0 0.054174 0.038824"
+      inertial_rpy = "0 0 0"
+      mass = "0.7102"
+      ixx = "0.0039943"
+      ixy = "3.697E-07"
+      ixz = "-5.7364E-08"
+      iyy = "0.0014946"
+      iyz = "-0.00036051"
+      izz = "0.0042554"
+    />
+    <xacro:create_link
+      link_name = "link_0"
+      mesh_package = "ar3-description"
+      mesh_name = "link_0"
+      inertial_xyz = "-0.022706 0.04294 -0.12205"
+      inertial_rpy = "0 0 0"
+      mass = "0.88065"
+      ixx = "0.0034"
+      ixy = "0.00042296"
+      ixz = "-0.00089231"
+      iyy = "0.0041778"
+      iyz = "0.0010848"
+      izz = "0.0027077"
+    />
+    <xacro:create_link
+      link_name = "link_1"
+      mesh_package = "ar3-description"
+      mesh_name = "link_1"
+      inertial_xyz = "0.064818 -0.11189 -0.038671"
+      inertial_rpy = "0 0 0"
+      mass = "0.57738"
+      ixx = "0.0047312"
+      ixy = "0.0022624"
+      ixz = "0.00032144"
+      iyy = "0.0020836"
+      iyz = "-0.00056569"
+      izz = "0.0056129"
+    />
+    <xacro:create_link
+      link_name = "link_2"
+      mesh_package = "ar3-description"
+      mesh_name = "link_2"
+      inertial_xyz = "-0.00029765 -0.023661 -1.04720367321"
+      inertial_rpy = "0 0 0"
+      mass = "0.1787"
+      ixx = "0.0001685"
+      ixy = "-2.7713E-05"
+      ixz = "5.6885E-06"
+      iyy = "0.00012865"
+      iyz = "2.9256E-05"
+      izz = "0.00020744"
+    />
+    <xacro:create_link
+      link_name = "link_3"
+      mesh_package = "ar3-description"
+      mesh_name = "link_3"
+      inertial_xyz = "-0.0016798 -0.00057319 -0.074404"
+      inertial_rpy = "0 0 0"
+      mass = "0.34936"
+      ixx = "0.0030532"
+      ixy = "-1.8615E-05"
+      ixz = "-7.0047E-05"
+      iyy = "0.0031033"
+      iyz = "-2.3301E-05"
+      izz = "0.00022264"
+    />
+    <xacro:create_link
+      link_name = "link_4"
+      mesh_package = "ar3-description"
+      mesh_name = "link_4"
+      inertial_xyz = "0.0015066 0 -0.012585"
+      inertial_rpy = "0 0 0"
+      mass = "0.11562"
+      ixx = "5.5035E-05"
+      ixy = "-1.019E-08"
+      ixz = "-2.6243E-06"
+      iyy = "8.2921E-05"
+      iyz = "1.4437E-08"
+      izz = "5.2518E-05"
+    />
+    <xacro:create_link
+      link_name = "link_5"
+      mesh_package = "ar3-description"
+      mesh_name = "link_5"
+      inertial_xyz = "0 0 0.0091432"
+      inertial_rpy = "0 0 0"
+      mass = "0.013863"
+      ixx = "1.3596E-06"
+      ixy = "3.0585E-13"
+      ixz = "5.7102E-14"
+      iyy = "1.7157E-06"
+      iyz = "6.3369E-09"
+      izz = "2.4332E-06"
+    />
+
+    <!-- Fix base link to world coordinate system at (0, 0, 0) -->
+    <joint name="base_joint" type="fixed">
+      <parent link="world" />
+      <child link="base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+    <!-- Joints between links -->
+    <joint name="joint_0" type="revolute">
+      <parent link="base_link" />
+      <child link="link_0" />
+      <origin xyz="0 0 0.0872" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit effort="3.5" lower="-1.80642" upper="2.92443" velocity="1.39626" />
+    </joint>
+    <joint name="joint_1" type="revolute">
+      <parent link="link_0" />
+      <child link="link_1" />
+      <origin xyz="0.0642 0 0.0831" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit effort="20" lower="-1.00531" upper="0.76969" velocity="1.04720" />
+    </joint>
+    <joint name="joint_2" type="revolute">
+      <parent link="link_1" />
+      <child link="link_2" />
+      <origin xyz="0 0 0.3050" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit effort="10" lower="-2.53087" upper="2.19911" velocity="2.79253" />
+    </joint>
+    <joint name="joint_3" type="revolute">
+      <parent link="link_2" />
+      <child link="link_3" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit effort="3" lower="-2.8234" upper="2.4043" velocity="4.1888" />
+    </joint>
+    <joint name="joint_4" type="revolute">
+      <parent link="link_3" />
+      <child link="link_4" />
+      <origin xyz="0 0 0.2239" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+      <limit effort="0.1" lower="-1.7176" upper="1.7176" velocity="3.4907" />
+    </joint>
+    <joint name="joint_5" type="revolute">
+      <parent link="link_4" />
+      <child link="link_5" />
+      <origin xyz="0 0 0.0179" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+      <limit effort="3" lower="-2.4802" upper="2.2687" velocity="26.1799" />
+    </joint>
+
+  </xacro:macro>
+</robot>
