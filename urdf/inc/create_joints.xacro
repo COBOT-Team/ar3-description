@@ -150,6 +150,9 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="joint_1">
         <command_interface name="position">
@@ -161,6 +164,9 @@
           <param name="max">${j1_velocity*pi/180}</param>
         </command_interface>
         <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
@@ -176,6 +182,9 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="joint_3">
         <command_interface name="position">
@@ -187,6 +196,9 @@
           <param name="max">${j3_velocity*pi/180}</param>
         </command_interface>
         <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
@@ -202,6 +214,9 @@
         <state_interface name="position">
           <param name="initial_value">0.0</param>
         </state_interface>
+        <state_interface name="velocity">
+          <param name="initial_value">0.0</param>
+        </state_interface>
       </joint>
       <joint name="joint_5">
         <command_interface name="position">
@@ -213,6 +228,9 @@
           <param name="max">${j5_velocity*pi/180}</param>
         </command_interface>
         <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+        <state_interface name="velocity">
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
