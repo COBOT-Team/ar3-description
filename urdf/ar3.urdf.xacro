@@ -3,8 +3,9 @@
 
   <xacro:macro name="ar3-description">
 
-    <!-- helper macro -->
+    <!-- helper macros -->
     <xacro:include filename="$(find ar3-description)/urdf/inc/create_link.xacro" />
+    <xacro:include filename="$(find ar3-description)/urdf/inc/create_joints.xacro" />
 
     <!-- Arm links -->
     <xacro:create_link
@@ -158,5 +159,47 @@
       <limit effort="3" lower="-2.4802" upper="2.2687" velocity="26.1799" />
     </joint>
 
+    <!-- Joints -->
+    <xacro:create_joints
+      serial_port = "/dev/ttyACM0"
+      baudrate = "115200"
+
+      j0_origin = "0 0 0.0872"
+      j0_axis = "0 0 1"
+      j0_min = "-100"
+      j0_max = "165"
+      j0_velocity = "80"
+      j0_effort = "3.5"
+
+      j1_origin = "0.0642 0 0.0831"
+      j1_axis = "0 1 0"
+      j1_min = "-55"
+      j1_max = "43"
+      j1_velocity = "60"
+
+      j2_origin = "0 0 0.3050"
+      j2_axis = "0 1 0"
+      j2_min = "-160"
+      j2_max = "125"
+      j2_velocity = "160"
+
+      j3_origin = "0 0 0"
+      j3_axis = "0 0 1"
+      j3_min = "-160"
+      j3_max = "135"
+      j3_velocity = "240"
+
+      j4_origin = "0 0 0.2239"
+      j4_axis = "0 1 0"
+      j4_min = "-98"
+      j4_max = "98"
+      j4_velocity = "200"
+
+      j5_origin = "0 0 0.0179"
+      j5_axis = "0 0 1"
+      j5_min = "-150"
+      j5_max = "140"
+      j5_velocity = "1500"
+    />
   </xacro:macro>
 </robot>

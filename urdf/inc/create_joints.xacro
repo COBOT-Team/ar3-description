@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="create_joints" params="
+    serial_port
+    baud_rate
+
+    j0_origin
+    j0_axis
+    j0_min
+    j0_max
+    j0_velocity
+    j0_effort
+
+    j1_origin
+    j1_axis
+    j1_min
+    j1_max
+    j1_velocity
+    j1_effort
+
+    j2_origin
+    j2_axis
+    j2_min
+    j2_max
+    j2_velocity
+    j2_effort
+
+    j3_origin
+    j3_axis
+    j3_min
+    j3_max
+    j3_velocity
+    j3_effort
+
+    j4_origin
+    j4_axis
+    j4_min
+    j4_max
+    j4_velocity
+    j4_effort
+
+    j5_origin
+    j5_axis
+    j5_min
+    j5_max
+    j5_velocity
+    j5_effort
+  ">
+
+    <!-- Fix base link to world coordinate system at (0, 0, 0) -->
+    <joint name="base_joint" type="fixed">
+      <parent link="world" />
+      <child link="base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 1" />
+    </joint>
+
+    <!-- Joints between links -->
+    <joint name="joint_0" type="revolute">
+      <parent link="base_link" />
+      <child link="link_0" />
+      <origin xyz="${j0_origin}" rpy="0 0 0" />
+      <axis xyz="${j0_axis}" />
+      <limit 
+        effort="${j0_effort}"
+        lower="${j0_min*pi/180}"
+        upper="${j0_max*pi/180}"
+        velocity="${j0_velocity*pi/180}"
+      />
+    </joint>
+    <joint name="joint_1" type="revolute">
+      <parent link="link_0" />
+      <child link="link_1" />
+      <origin xyz="${j1_origin}" rpy="0 0 0" />
+      <axis xyz="${j1_axis}" />
+      <limit 
+        effort="${j1_effort}"
+        lower="${j1_min*pi/180}"
+        upper="${j1_max*pi/180}"
+        velocity="${j1_velocity*pi/180}"
+      />
+    </joint>
+    <joint name="joint_2" type="revolute">
+      <parent link="link_1" />
+      <child link="link_2" />
+      <origin xyz="${j2_origin}" rpy="0 0 0" />
+      <axis xyz="${j2_axis}" />
+      <limit 
+        effort="${j2_effort}"
+        lower="${j2_min*pi/180}"
+        upper="${j2_max*pi/180}"
+        velocity="${j2_velocity*pi/180}"
+      />
+    </joint>
+    <joint name="joint_3" type="revolute">
+      <parent link="link_2" />
+      <child link="link_3" />
+      <origin xyz="${j3_origin}" rpy="0 0 0" />
+      <axis xyz="${j3_axis}" />
+      <limit 
+        effort="${j3_effort}"
+        lower="${j3_min*pi/180}"
+        upper="${j3_max*pi/180}"
+        velocity="${j3_velocity*pi/180}"
+      />
+    </joint>
+    <joint name="joint_4" type="revolute">
+      <parent link="link_3" />
+      <child link="link_4" />
+      <origin xyz="${j4_origin}" rpy="0 0 0" />
+      <axis xyz="${j4_axis}" />
+      <limit 
+        effort="${j4_effort}"
+        lower="${j4_min*pi/180}"
+        upper="${j4_max*pi/180}"
+        velocity="${j4_velocity*pi/180}"
+      />
+    </joint>
+    <joint name="joint_5" type="revolute">
+      <parent link="link_4" />
+      <child link="link_5" />
+      <origin xyz="${j5_origin}" rpy="0 0 0" />
+      <axis xyz="${j5_axis}" />
+      <limit 
+        effort="${j5_effort}"
+        lower="${j5_min*pi/180}"
+        upper="${j5_max*pi/180}"
+        velocity="${j5_velocity*pi/180}"
+      />
+    </joint>
+
+    <!-- ros2_control joints -->
+    <ros2_control name="ar3_system" type="system">
+
+      <hardware>
+        <param name="serial_port">${serial_port}</param>
+        <param name="baud_rate">${baud_rate}</param>
+      </hardware>
+
+      <joint name="joint_0">
+        <command_interface name="position">
+          <param name="min">${j0_min*pi/180}</param>
+          <param name="max">${j0_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j0_velocity*pi/180}</param>
+          <param name="max">${j0_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="joint_1">
+        <command_interface name="position">
+          <param name="min">${j1_min*pi/180}</param>
+          <param name="max">${j1_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j1_velocity*pi/180}</param>
+          <param name="max">${j1_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="joint_2">
+        <command_interface name="position">
+          <param name="min">${j2_min*pi/180}</param>
+          <param name="max">${j2_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j2_velocity*pi/180}</param>
+          <param name="max">${j2_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="joint_3">
+        <command_interface name="position">
+          <param name="min">${j3_min*pi/180}</param>
+          <param name="max">${j3_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j3_velocity*pi/180}</param>
+          <param name="max">${j3_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="joint_4">
+        <command_interface name="position">
+          <param name="min">${j4_min*pi/180}</param>
+          <param name="max">${j4_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j4_velocity*pi/180}</param>
+          <param name="max">${j4_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+      <joint name="joint_5">
+        <command_interface name="position">
+          <param name="min">${j5_min*pi/180}</param>
+          <param name="max">${j5_max*pi/180}</param>
+        </command_interface>
+        <command_interface name="velocity">
+          <param name="min">${-j5_velocity*pi/180}</param>
+          <param name="max">${j5_velocity*pi/180}</param>
+        </command_interface>
+        <state_interface name="position">
+          <param name="initial_value">0.0</param>
+        </state_interface>
+      </joint>
+    </ros2_control>
+  </xacro:macro>
+</robot>
