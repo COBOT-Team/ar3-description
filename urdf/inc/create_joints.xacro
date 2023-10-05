@@ -49,12 +49,12 @@
   ">
 
     <!-- Fix base link to world coordinate system at (0, 0, 0) -->
-    <joint name="base_joint" type="fixed">
+    <!-- <joint name="base_joint" type="fixed">
       <parent link="world" />
       <child link="base_link" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <axis xyz="0 0 1" />
-    </joint>
+    </joint> -->
 
     <!-- Joints between links -->
     <joint name="joint_0" type="revolute">

@@ -1,9 +1,10 @@
+<?xml version="1.0"?>
+
 <!-- 
   Adapted from:
   https://github.com/ros-controls/ros2_control_demos/blob/07a897f2c123065f1b283966ef7b1b2e30704ded/ros2_control_demo_description/r6bot/urdf/inc/create_link.xacro
  -->
 
-<?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
   <xacro:macro name="create_link" params="
