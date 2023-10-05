@@ -24,13 +24,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://${mesh_package}/meshes/visual/${mesh_name}.dae"/>
+          <mesh filename="package://${mesh_package}/meshes/visual/${mesh_name}.stl"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://${mesh_package}/meshes/collision/${mesh_name}.stl"/>
+          <mesh filename="package://${mesh_package}/meshes/visual/${mesh_name}.stl"/>
         </geometry>
       </collision>
       <inertial>
