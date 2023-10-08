@@ -134,6 +134,7 @@
     <ros2_control name="ar3_system" type="system">
 
       <hardware>
+        <plugin>ar3_hardware_interface/AR3HardwareInterface</plugin>
         <param name="serial_port">${serial_port}</param>
         <param name="baud_rate">${baud_rate}</param>
       </hardware>
