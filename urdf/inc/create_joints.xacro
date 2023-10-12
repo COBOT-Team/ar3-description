@@ -131,7 +131,7 @@
     </joint>
 
     <!-- ros2_control joints -->
-    <ros2_control name="ar3_system" type="system">
+    <!-- <ros2_control name="ar3_system" type="system">
 
       <hardware>
         <plugin>ar3_hardware_interface/AR3HardwareInterface</plugin>
@@ -235,6 +235,6 @@
           <param name="initial_value">0.0</param>
         </state_interface>
       </joint>
-    </ros2_control>
+    </ros2_control> -->
   </xacro:macro>
 </robot>
