@@ -104,6 +104,20 @@
     iyz = "6.3369E-09"
     izz = "2.4332E-06"
   />
+  <xacro:create_link
+    link_name = "ar3_gripper"
+    mesh_package = "ar3_description"
+    mesh_name = "link_5"
+    inertial_xyz = "0 0 0.0091432"
+    inertial_rpy = "0 0 0"
+    mass = "0.013863"
+    ixx = "1.3596E-06"
+    ixy = "3.0585E-13"
+    ixz = "5.7102E-14"
+    iyy = "1.7157E-06"
+    iyz = "6.3369E-09"
+    izz = "2.4332E-06"
+  />
 
   <!-- Joints -->
   <xacro:create_joints

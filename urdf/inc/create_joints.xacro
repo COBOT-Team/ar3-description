@@ -129,6 +129,18 @@
         velocity="${j5_velocity*pi/180}"
       />
     </joint>
+    <joint name="joint_gripper" type="fixed">
+      <parent link="link_5" />
+      <child link="ar3_gripper" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="0 0 0" />
+      <limit 
+        effort="${j5_effort}"
+        lower="${j5_min*pi/180}"
+        upper="${j5_max*pi/180}"
+        velocity="${j5_velocity*pi/180}"
+      />
+    </joint>
 
     <!-- ros2_control joints -->
     <!-- <ros2_control name="ar3_system" type="system">
