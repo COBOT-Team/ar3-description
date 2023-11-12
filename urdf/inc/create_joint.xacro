@@ -7,21 +7,21 @@
     child
     origin
     axis
-    min
-    max
+    min_deg
+    max_deg
     velocity
     effort
   ">
   
-    <joint name="{name}" type="revolute">
-      <parent link="{parent}" />
-      <child link="{child}" />
+    <joint name="${name}" type="revolute">
+      <parent link="${parent}" />
+      <child link="${child}" />
       <origin xyz="${origin}" rpy="0 0 0" />
       <axis xyz="${axis}" />
       <limit 
         effort="${effort}"
-        lower="${min*pi/180}"
-        upper="${max*pi/180}"
+        lower="${min_deg*pi/180}"
+        upper="${max_deg*pi/180}"
         velocity="${velocity*pi/180}"
       />
     </joint>
