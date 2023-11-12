@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+
+<!-- 
+  This macro creates a single AR3 robot arm at a given location and orientation, relative to a given
+  link. The 'prefix' parameter is used to name the links and joints of the robot. For instance, if
+  prefix = "ar3", we would have links named "ar3_base", "ar3_link_0", "ar3_link_1", etc. and joints
+  named "ar3_base_joint", "ar3_joint_0", "ar3_joint_1", etc.
+ -->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Include helper macros -->
+  <xacro:include filename="$(find ar3_description)/urdf/inc/create_link.xacro" />
+  <xacro:include filename="$(find ar3_description)/urdf/inc/create_joint.xacro" />
+
+  <xacro:macro name="create_ar3" params="
+    prefix
+    origin_xyz
+    origin_rpy
+    parent_link
+  ">
+
+    <!-- Base of AR3 -->
+    <xacro:create_link
+      link_name = "{prefix}_base"
+      mesh_package = "ar3_description"
+      mesh_name = "base"
+    />
+
+    <!-- Arm links -->
+    <xacro:create_link
+      link_name = "{prefix}_link_0"
+      mesh_package = "ar3_description"
+      mesh_name = "link_0"
+    />
+    <xacro:create_link
+      link_name = "{prefix}_link_1"
+      mesh_package = "ar3_description"
+      mesh_name = "link_1"
+    />
+    <xacro:create_link
+      link_name = "{prefix}_link_2"
+      mesh_package = "ar3_description"
+      mesh_name = "link_2"
+    />
+    <xacro:create_link
+      link_name = "{prefix}_link_3"
+      mesh_package = "ar3_description"
+      mesh_name = "link_3"
+    />
+    <xacro:create_link
+      link_name = "{prefix}_link_4"
+      mesh_package = "ar3_description"
+      mesh_name = "link_4"
+    />
+    <xacro:create_link
+      link_name = "{prefix}_link_5"
+      mesh_package = "ar3_description"
+      mesh_name = "link_5"
+    />
+
+    <!-- Fixed joint between AR3 base and parent link -->
+    <joint name="{prefix}_base_joint" type="fixed">
+      <origin xyz="{origin_xyz}" rpy="{origin_rpy}" />
+      <parent link="{parent_link}" />
+      <child link="{prefix}_base" />
+    </joint>
+
+    <!-- Arm Joints -->
+      <xacro:create_joint
+      name = "{prefix}_joint_0"
+      parent = "{prefix}_base"
+      child = "{prefix}_link_0"
+      origin = "0 0 0.0872"
+      axis = "0 0 1"
+      min = "-100"
+      max = "165"
+      velocity = "80"
+      effort = "3.5"
+    />
+    <xacro:create_joint
+      name = "{prefix}_joint_1"
+      parent = "{prefix}_link_0"
+      child = "{prefix}_link_1"
+      origin = "0.0642 0 0.0831"
+      axis = "0 1 0"
+      min = "-55"
+      max = "43"
+      velocity = "60"
+      effort = "20"
+    />
+    <xacro:create_joint
+      name = "{prefix}_joint_2"
+      parent = "{prefix}_link_1"
+      child = "{prefix}_link_2"
+      origin = "0 0 0.3050"
+      axis = "0 1 0"
+      min = "-160"
+      max = "125"
+      velocity = "160"
+      effort = "10"
+    />
+    <xacro:create_joint
+      name = "{prefix}_joint_3"
+      parent = "{prefix}_link_2"
+      child = "{prefix}_link_3"
+      origin = "0 0 0.0356"
+      axis = "0 0 1"
+      min = "-160"
+      max = "135"
+      velocity = "240"
+      effort = "3"
+    />
+    <xacro:create_joint
+      name = "{prefix}_joint_4"
+      parent = "{prefix}_link_3"
+      child = "{prefix}_link_4"
+      origin = "0 0 0.1873"
+      axis = "0 1 0"
+      min = "-98"
+      max = "98"
+      velocity = "200"
+      effort = "0.1"
+    />
+    <xacro:create_joint
+      name = "{prefix}_joint_5"
+      parent = "{prefix}_link_4"
+      child = "{prefix}_link_5"
+      origin = "0 0 0.0199"
+      axis = "0 0 1"
+      min = "-150"
+      max = "140"
+      velocity = "1500"
+      effort = "3"
+    />
+  </xacro:macro>
+</robot>

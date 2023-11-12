@@ -8,18 +8,10 @@
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
   <xacro:macro name="create_link" params="
-        link_name
-        mesh_package
-        mesh_name
-        inertial_xyz
-        inertial_rpy
-        mass
-        ixx
-        ixy
-        ixz
-        iyy
-        iyz
-        izz">
+    link_name
+    mesh_package
+    mesh_name
+  ">
     <link name="${link_name}">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -33,11 +25,6 @@
           <mesh filename="package://${mesh_package}/meshes/visual/${mesh_name}.stl"/>
         </geometry>
       </collision>
-      <inertial>
-        <origin xyz="${inertial_xyz}" rpy="${inertial_rpy}"/>
-        <mass value="${mass}"/>
-        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
-      </inertial>
     </link>
   </xacro:macro>
 </robot>
