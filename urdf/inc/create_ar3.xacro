@@ -59,6 +59,16 @@
       mesh_name = "link_5"
     />
 
+    <!-- Gripper links -->
+    <xacro:create_link
+      link_name = "${prefix}_link_gripper"
+      mesh_package = "ar3_description"
+      mesh_name = "gripper"
+    />
+
+    <!-- Phantom link for gripper gearbox -->
+    <link name="${prefix}_link_gripper_phantom" />
+
     <!-- Fixed joint between AR3 base and parent link -->
     <joint name="${prefix}_base_joint" type="fixed">
       <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
@@ -133,5 +143,26 @@
       velocity = "1500"
       effort = "3"
     />
+
+    <!-- Fixed joint between gripper and last link -->
+    <joint name="${prefix}_gripper_base_joint" type="fixed">
+      <origin xyz="0 0 0.016" rpy="0 0 0" />
+      <parent link="${prefix}_link_5" />
+      <child link="${prefix}_link_gripper" />
+    </joint>
+
+    <!-- Gripper motor joint -->
+    <xacro:create_joint
+      name = "${prefix}_gripper"
+      parent = "${prefix}_link_gripper"
+      child = "${prefix}_link_gripper_phantom"
+      origin = "0 0 0"
+      axis = "0 0 1"
+      min_deg = "0"
+      max_deg = "180"
+      velocity = "0.5"
+      effort = "0.5"
+    />
+    
   </xacro:macro>
 </robot>
