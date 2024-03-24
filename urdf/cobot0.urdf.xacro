@@ -6,8 +6,8 @@
 
     <xacro:create_ar3
         prefix="cobot0"
-        origin_xyz="0 0 0"
-        origin_rpy="0 0 0"
+        origin_xyz="-0.39329375 0 0"
+        origin_rpy="0 0 ${-pi/2}"
         parent_link="base_link"
     />
 
