@@ -83,9 +83,9 @@
       child = "${prefix}_link_0"
       origin = "0 0 0.0872"
       axis = "0 0 1"
-      min_deg = "-100"
-      max_deg = "165"
-      velocity = "80"
+      min_deg = "-120"
+      max_deg = "160"
+      velocity = "78"
       effort = "3.5"
     />
     <xacro:create_joint
@@ -94,9 +94,9 @@
       child = "${prefix}_link_1"
       origin = "0.0642 0 0.0831"
       axis = "0 1 0"
-      min_deg = "-55"
-      max_deg = "43"
-      velocity = "60"
+      min_deg = "-40"
+      max_deg = "70"
+      velocity = "58"
       effort = "20"
     />
     <xacro:create_joint
@@ -105,9 +105,9 @@
       child = "${prefix}_link_2"
       origin = "0 0 0.3050"
       axis = "0 1 0"
-      min_deg = "-160"
-      max_deg = "125"
-      velocity = "160"
+      min_deg = "-140"
+      max_deg = "140"
+      velocity = "158"
       effort = "10"
     />
     <xacro:create_joint
@@ -116,9 +116,9 @@
       child = "${prefix}_link_3"
       origin = "0 0 0.0356"
       axis = "0 0 1"
-      min_deg = "-160"
-      max_deg = "135"
-      velocity = "240"
+      min_deg = "-158"
+      max_deg = "95"
+      velocity = "238"
       effort = "3"
     />
     <xacro:create_joint
@@ -127,9 +127,9 @@
       child = "${prefix}_link_4"
       origin = "0 0 0.1873"
       axis = "0 1 0"
-      min_deg = "-98"
-      max_deg = "98"
-      velocity = "200"
+      min_deg = "-84"
+      max_deg = "105"
+      velocity = "198"
       effort = "0.1"
     />
     <xacro:create_joint
@@ -138,9 +138,9 @@
       child = "${prefix}_link_5"
       origin = "0 0 0.0199"
       axis = "0 0 1"
-      min_deg = "-150"
-      max_deg = "140"
-      velocity = "1500"
+      min_deg = "-140"
+      max_deg = "150"
+      velocity = "1498"
       effort = "3"
     />
 
@@ -158,8 +158,8 @@
       child = "${prefix}_link_gripper_phantom"
       origin = "0 0 0"
       axis = "0 0 1"
-      min_deg = "0"
-      max_deg = "180"
+      min_deg = "30"
+      max_deg = "160"
       velocity = "0.5"
       effort = "0.5"
     />
