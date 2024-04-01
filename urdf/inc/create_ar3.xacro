@@ -140,7 +140,7 @@
       axis = "0 0 1"
       min_deg = "-140"
       max_deg = "150"
-      velocity = "1498"
+      velocity = "800"
       effort = "3"
     />
 
