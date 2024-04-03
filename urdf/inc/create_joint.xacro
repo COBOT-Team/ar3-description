@@ -5,6 +5,8 @@
     name
     parent
     child
+    bias_parent
+    bias_child
     origin
     axis
     min_deg
@@ -25,5 +27,20 @@
         velocity="${velocity*pi/180}"
       />
     </joint>
+
+    <xacro:unless value="${bias_parent == '' || bias_child == ''}">
+      <joint name="${name}_bias" type="revolute">
+        <parent link="${bias_parent}" />
+        <child link="${bias_child}" />
+        <origin xyz="${origin}" rpy="0 0 0" />
+        <axis xyz="${axis}" />
+        <limit 
+          effort="${effort}"
+          lower="${min_deg*pi/180}"
+          upper="${max_deg*pi/180}"
+          velocity="${velocity*pi/180}"
+        />
+      </joint>
+    </xacro:unless>
   </xacro:macro>
 </robot>

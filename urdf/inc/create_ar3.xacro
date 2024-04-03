@@ -59,6 +59,14 @@
       mesh_name = "link_5"
     />
 
+    <!-- Arm bias links -->
+    <link name="${prefix}_link_0_bias" />
+    <link name="${prefix}_link_1_bias" />
+    <link name="${prefix}_link_2_bias" />
+    <link name="${prefix}_link_3_bias" />
+    <link name="${prefix}_link_4_bias" />
+    <!-- <link name="${prefix}_link_5_bias" /> -->
+
     <!-- Gripper links -->
     <xacro:create_link
       link_name = "${prefix}_link_gripper"
@@ -84,6 +92,8 @@
       name = "${prefix}_joint_0"
       parent = "${prefix}_base"
       child = "${prefix}_link_0"
+      bias_parent = "${prefix}_base"
+      bias_child = "${prefix}_link_0_bias"
       origin = "0 0 0.0872"
       axis = "0 0 1"
       min_deg = "-120"
@@ -95,6 +105,8 @@
       name = "${prefix}_joint_1"
       parent = "${prefix}_link_0"
       child = "${prefix}_link_1"
+      bias_parent = "${prefix}_link_0_bias"
+      bias_child = "${prefix}_link_1_bias"
       origin = "0.0642 0 0.0831"
       axis = "0 1 0"
       min_deg = "-40"
@@ -106,6 +118,8 @@
       name = "${prefix}_joint_2"
       parent = "${prefix}_link_1"
       child = "${prefix}_link_2"
+      bias_parent = "${prefix}_link_1_bias"
+      bias_child = "${prefix}_link_2_bias"
       origin = "0 0 0.3050"
       axis = "0 1 0"
       min_deg = "-140"
@@ -117,6 +131,8 @@
       name = "${prefix}_joint_3"
       parent = "${prefix}_link_2"
       child = "${prefix}_link_3"
+      bias_parent = "${prefix}_link_2_bias"
+      bias_child = "${prefix}_link_3_bias"
       origin = "0 0 0.0356"
       axis = "0 0 1"
       min_deg = "-158"
@@ -128,6 +144,8 @@
       name = "${prefix}_joint_4"
       parent = "${prefix}_link_3"
       child = "${prefix}_link_4"
+      bias_parent = "${prefix}_link_3_bias"
+      bias_child = "${prefix}_link_4_bias"
       origin = "0 0 0.1873"
       axis = "0 1 0"
       min_deg = "-84"
@@ -157,7 +175,7 @@
     <!-- Fixed joint between link 4 and eef_aruco -->
     <joint name="${prefix}_eef_aruco_joint" type="fixed">
       <origin xyz="0 0 -0.06" rpy="0 ${pi} 0" />
-      <parent link="${prefix}_link_4" />
+      <parent link="${prefix}_link_4_bias" />
       <child link="${prefix}_eef_aruco" />
     </joint>
 
