@@ -69,6 +69,9 @@
     <!-- Phantom link for gripper gearbox -->
     <link name="${prefix}_link_gripper_phantom" />
 
+    <!-- Aruco link -->
+    <link name="${prefix}_eef_aruco" />
+
     <!-- Fixed joint between AR3 base and parent link -->
     <joint name="${prefix}_base_joint" type="fixed">
       <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
@@ -149,6 +152,13 @@
       <origin xyz="0 0 0.016" rpy="0 0 0" />
       <parent link="${prefix}_link_5" />
       <child link="${prefix}_link_gripper" />
+    </joint>
+
+    <!-- Fixed joint between link 4 and eef_aruco -->
+    <joint name="${prefix}_eef_aruco_joint" type="fixed">
+      <origin xyz="0 0 -0.06" rpy="0 ${pi} 0" />
+      <parent link="${prefix}_link_4" />
+      <child link="${prefix}_eef_aruco" />
     </joint>
 
     <!-- Gripper motor joint -->
