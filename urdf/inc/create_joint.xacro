@@ -28,7 +28,7 @@
       />
     </joint>
 
-    <xacro:unless value="${bias_parent == '' || bias_child == ''}">
+    <xacro:unless value="${bias_parent == 'none' or bias_child == 'none'}">
       <joint name="${name}_bias" type="revolute">
         <parent link="${bias_parent}" />
         <child link="${bias_child}" />

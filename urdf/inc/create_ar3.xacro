@@ -65,7 +65,7 @@
     <link name="${prefix}_link_2_bias" />
     <link name="${prefix}_link_3_bias" />
     <link name="${prefix}_link_4_bias" />
-    <!-- <link name="${prefix}_link_5_bias" /> -->
+    <link name="${prefix}_link_5_bias" />
 
     <!-- Gripper links -->
     <xacro:create_link
@@ -135,8 +135,8 @@
       bias_child = "${prefix}_link_3_bias"
       origin = "0 0 0.0356"
       axis = "0 0 1"
-      min_deg = "-158"
-      max_deg = "95"
+      min_deg = "-95"
+      max_deg = "158"
       velocity = "238"
       effort = "3"
     />
@@ -157,6 +157,8 @@
       name = "${prefix}_joint_5"
       parent = "${prefix}_link_4"
       child = "${prefix}_link_5"
+      bias_parent = "${prefix}_link_4_bias"
+      bias_child = "${prefix}_link_5_bias"
       origin = "0 0 0.0199"
       axis = "0 0 1"
       min_deg = "-140"
@@ -184,6 +186,8 @@
       name = "${prefix}_gripper"
       parent = "${prefix}_link_gripper"
       child = "${prefix}_link_gripper_phantom"
+      bias_parent = "none"
+      bias_child = "none"
       origin = "0 0 0"
       axis = "0 0 1"
       min_deg = "30"
