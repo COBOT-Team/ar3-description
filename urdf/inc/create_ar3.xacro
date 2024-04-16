@@ -73,6 +73,7 @@
       mesh_package = "ar3_description"
       mesh_name = "gripper"
     />
+    <link name="tof_optical_frame_id" />
 
     <!-- Phantom link for gripper gearbox -->
     <link name="${prefix}_link_gripper_phantom" />
@@ -172,6 +173,14 @@
       <origin xyz="0 0 0.016" rpy="0 0 0" />
       <parent link="${prefix}_link_5" />
       <child link="${prefix}_link_gripper" />
+    </joint>
+
+
+    <!-- Fixed joint between gripper and TOF optical frame -->
+    <joint name="${prefix}_tof_optical_joint" type="fixed">
+      <origin xyz="0 0 0.09" rpy="0 0 ${pi / 2}" />
+      <parent link="${prefix}_link_gripper" />
+      <child link="tof_optical_frame_id" />
     </joint>
 
     <!-- Fixed joint between link 4 and eef_aruco -->
