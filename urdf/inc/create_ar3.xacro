@@ -110,8 +110,8 @@
       bias_child = "${prefix}_link_1_bias"
       origin = "0.0642 0 0.0831"
       axis = "0 1 0"
-      min_deg = "-40"
-      max_deg = "70"
+      min_deg = "-10"
+      max_deg = "80"
       velocity = "58"
       effort = "20"
     />
@@ -123,7 +123,7 @@
       bias_child = "${prefix}_link_2_bias"
       origin = "0 0 0.3050"
       axis = "0 1 0"
-      min_deg = "-140"
+      min_deg = "-80"
       max_deg = "140"
       velocity = "158"
       effort = "10"
@@ -137,7 +137,7 @@
       origin = "0 0 0.0356"
       axis = "0 0 1"
       min_deg = "-95"
-      max_deg = "158"
+      max_deg = "100"
       velocity = "238"
       effort = "3"
     />
@@ -150,7 +150,7 @@
       origin = "0 0 0.1873"
       axis = "0 1 0"
       min_deg = "-84"
-      max_deg = "105"
+      max_deg = "98"
       velocity = "198"
       effort = "0.1"
     />
@@ -170,7 +170,7 @@
 
     <!-- Fixed joint between gripper and last link -->
     <joint name="${prefix}_gripper_base_joint" type="fixed">
-      <origin xyz="0 0 0.016" rpy="0 0 0" />
+      <origin xyz="0 0 0.016" rpy="0 0 ${-pi / 6}" />
       <parent link="${prefix}_link_5" />
       <child link="${prefix}_link_gripper" />
     </joint>
@@ -178,14 +178,14 @@
 
     <!-- Fixed joint between gripper and TOF optical frame -->
     <joint name="${prefix}_tof_optical_joint" type="fixed">
-      <origin xyz="0 0 0.09" rpy="0 0 ${pi / 2}" />
+      <origin xyz="0 0 0.09" rpy="0 0 0" />
       <parent link="${prefix}_link_gripper" />
       <child link="tof_optical_frame_id" />
     </joint>
 
     <!-- Fixed joint between link 4 and eef_aruco -->
     <joint name="${prefix}_eef_aruco_joint" type="fixed">
-      <origin xyz="0 0 -0.06" rpy="0 ${pi} 0" />
+      <origin xyz="0 0 -0.06" rpy="0 ${pi} ${-pi / 2}" />
       <parent link="${prefix}_link_4_bias" />
       <child link="${prefix}_eef_aruco" />
     </joint>
