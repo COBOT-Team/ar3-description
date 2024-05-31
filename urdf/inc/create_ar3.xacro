@@ -162,7 +162,7 @@
       bias_child = "${prefix}_link_5_bias"
       origin = "0 0 0.0199"
       axis = "0 0 1"
-      min_deg = "-140"
+      min_deg = "-164"
       max_deg = "150"
       velocity = "800"
       effort = "3"
